@@ -27,18 +27,21 @@ npm run build
   "title": "Борщ со свининой",
   "description": "Короткое описание",
   "photo": "/recipes/borsch-so-svininoy.jpg",
+  "gallery": ["/recipes/borsch-so-svininoy-2.jpg", "/recipes/borsch-so-svininoy-3.jpg"],
   "tags": ["обед", "суп"],
   "created_at": "2026-06-16",
   "ingredients": [
     { "name": "Свинина", "amount": 500, "unit": "г" }
   ],
   "steps": [
-    { "text": "Сварить бульон", "timer_seconds": 5400 }
+    { "text": "Сварить бульон", "timer_seconds": 5400, "photo": "/recipes/borsch-so-svininoy-step1.jpg" }
   ]
 }
 ```
 
-- `photo` — путь относительно `public/`, можно `null`, если фото пока нет
+- `photo` — главное фото (обложка), путь относительно `public/`, можно `null`
+- `gallery` — необязательный массив дополнительных фото, показывается отдельным блоком на странице рецепта
+- `photo` в шаге — необязательное поле, фото прямо внутри инструкции (например, как должно выглядеть тесто на этом этапе)
 - `timer_seconds` в шаге — необязательное поле, используется только для отображения времени
 - `slug` должен быть уникальным и совпадать с именем файла (без `.json`)
 

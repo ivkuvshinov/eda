@@ -351,6 +351,39 @@ h3 {
   color: var(--color-gold);
 }
 
+.step__photo {
+  display: block;
+  margin-top: 10px;
+  max-width: 100%;
+  border-radius: var(--radius);
+}
+
+/* ---------- Gallery ---------- */
+
+.recipe__gallery {
+  margin-top: 48px;
+}
+
+.recipe__gallery h2 {
+  font-size: 18px;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.gallery__grid img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
 @media (max-width: 640px) {
   .recipe__body {
     grid-template-columns: 1fr;

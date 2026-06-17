@@ -60,11 +60,25 @@ export default function Recipe() {
                   {step.timer_seconds && (
                     <span className="step__timer">{Math.round(step.timer_seconds / 60)} мин</span>
                   )}
+                  {step.photo && (
+                    <img src={step.photo} alt="" className="step__photo" loading="lazy" />
+                  )}
                 </li>
               ))}
             </ol>
           </section>
         </div>
+
+        {recipe.gallery?.length > 0 && (
+          <section className="recipe__gallery">
+            <h2>Фото</h2>
+            <div className="gallery__grid">
+              {recipe.gallery.map((src, i) => (
+                <img key={i} src={src} alt="" loading="lazy" />
+              ))}
+            </div>
+          </section>
+        )}
       </article>
     </div>
   )

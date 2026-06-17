@@ -1,7 +1,18 @@
 import { useParams, Link } from 'react-router-dom'
 import { getRecipeBySlug } from '../data/recipes.js'
-import StampBadge from '../components/StampBadge.jsx'
 import NotFound from './NotFound.jsx'
+
+function Step({ step }) {
+  return (
+    <li>
+      <span className="step__text">{step.text}</span>
+      {step.timer_seconds && (
+        <span className="step__timer">{Math.round(step.timer_seconds / 60)} мин</span>
+      )}
+      {step.photo && <img src={step.photo} alt="" className="step__photo" loading="lazy" />}
+    </li>
+  )
+}
 
 export default function Recipe() {
   const { slug } = useParams()
@@ -24,7 +35,6 @@ export default function Recipe() {
         </div>
 
         <header className="recipe__header">
-          <StampBadge />
           <h1 className="recipe__title">{recipe.title}</h1>
           {recipe.description && <p className="recipe__desc">{recipe.description}</p>}
           {recipe.tags?.length > 0 && (
@@ -43,7 +53,7 @@ export default function Recipe() {
               {recipe.ingredients.map((ing, i) => (
                 <li key={i}>
                   <span className="amount">
-                    {ing.amount} {ing.unit}
+                    {ing.amount ? `${ing.amount}${ing.unit ? ' ' + ing.unit : ''}` : ing.unit}
                   </span>
                   <span className="name">{ing.name}</span>
                 </li>
@@ -53,19 +63,24 @@ export default function Recipe() {
 
           <section className="recipe__steps">
             <h2>Шаги</h2>
-            <ol>
-              {recipe.steps.map((step, i) => (
-                <li key={i}>
-                  <span className="step__text">{step.text}</span>
-                  {step.timer_seconds && (
-                    <span className="step__timer">{Math.round(step.timer_seconds / 60)} мин</span>
-                  )}
-                  {step.photo && (
-                    <img src={step.photo} alt="" className="step__photo" loading="lazy" />
-                  )}
-                </li>
-              ))}
-            </ol>
+            {recipe.sections ? (
+              recipe.sections.map((sec, si) => (
+                <div className="step-section" key={si}>
+                  <h3>{sec.title}</h3>
+                  <ol>
+                    {sec.steps.map((step, i) => (
+                      <Step step={step} key={i} />
+                    ))}
+                  </ol>
+                </div>
+              ))
+            ) : (
+              <ol>
+                {recipe.steps.map((step, i) => (
+                  <Step step={step} key={i} />
+                ))}
+              </ol>
+            )}
           </section>
         </div>
 

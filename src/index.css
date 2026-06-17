@@ -220,50 +220,6 @@ h3 {
   margin: 0;
 }
 
-/* ---------- Stamp signature element ---------- */
-
-.stamp {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 76px;
-  height: 76px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transform: rotate(-9deg);
-  color: var(--color-stamp);
-  mix-blend-mode: multiply;
-}
-
-.recipe__header .stamp {
-  position: static;
-  margin: 0 auto 16px;
-  transform: rotate(-6deg);
-  mix-blend-mode: normal;
-}
-
-.stamp__ring {
-  position: absolute;
-  inset: 0;
-  border: 2px solid var(--color-stamp);
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 5px var(--color-bg), inset 0 0 0 6px var(--color-stamp);
-  opacity: 0.85;
-}
-
-.stamp__text {
-  position: relative;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  line-height: 1.2;
-  padding: 0 8px;
-}
-
 /* ---------- Recipe page ---------- */
 
 .recipe__header {
@@ -317,6 +273,18 @@ h3 {
 
 .recipe__steps ol {
   counter-reset: step;
+}
+
+.step-section {
+  margin-bottom: 28px;
+}
+
+.step-section h3 {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-sage-dark);
+  margin-bottom: 12px;
 }
 
 .recipe__steps li {

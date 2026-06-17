@@ -19,14 +19,16 @@ export default function Home() {
         <p className="header__eyebrow">Личная книга рецептов</p>
         <h1 className="header__title">Готовлю. Проверяю. Записываю.</h1>
         <p className="header__lead">
-          Здесь только блюда, которые прошли через мою кухню и получили штамп — без чужих рецептов и без угадайки.
+          Здесь только мои проверенные рецепты.
         </p>
       </header>
 
       <TagFilter tags={tags} active={activeTag} onToggle={toggleTag} />
 
       {visible.length === 0 ? (
-        <p className="empty">Рецептов с этим тегом пока нет.</p>
+        <p className="empty">
+          {recipes.length === 0 ? 'Рецептов пока нет — скоро появятся.' : 'Рецептов с этим тегом пока нет.'}
+        </p>
       ) : (
         <div className="grid">
           {visible.map((recipe) => (

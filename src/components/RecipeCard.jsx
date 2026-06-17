@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import StampBadge from './StampBadge.jsx'
 
 export default function RecipeCard({ recipe }) {
   return (
@@ -9,7 +8,6 @@ export default function RecipeCard({ recipe }) {
         style={recipe.photo ? { backgroundImage: `url(${recipe.photo})` } : undefined}
       >
         {!recipe.photo && <span className="photo-fallback">{recipe.title[0]}</span>}
-        <StampBadge />
       </div>
       <div className="card__body">
         <h3 className="card__title">{recipe.title}</h3>
